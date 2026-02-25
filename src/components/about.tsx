@@ -19,7 +19,7 @@ export default function About() {
             <div className="absolute -inset-4 bg-ap-green/10 rounded-3xl transform -rotate-3"></div>
 
             <img
-              src="https://picsum.photos/seed/team/800/1000"
+              src="/images/about-section.jpeg"
               alt="Landscaping team at work"
               className="relative rounded-2xl shadow-2xl object-cover w-full h-[500px]"
               referrerPolicy="no-referrer"
