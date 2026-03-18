@@ -1,6 +1,7 @@
 "use client";
 
 import { Leaf } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <div className="relative flex items-center justify-center w-10 h-10 rounded-full border-2 border-ap-green bg-white">
                 <span className="text-xl font-black text-ap-forest tracking-tighter">
-                  AP
+                  ACP
                 </span>
                 <Leaf
                   className="absolute -bottom-1 -right-1 text-ap-green fill-ap-green"
@@ -21,7 +22,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-black text-white leading-none tracking-tight">
-                  AP
+                  ACP
                 </span>
                 <span className="text-xs font-bold text-ap-green leading-none tracking-widest uppercase">
                   Landscaping
@@ -34,137 +35,124 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Footer Links Column 1 */}
+          {/* Quick Links */}
           <div>
             <h4 className="text-white font-bold mb-4 uppercase text-sm tracking-wider">
               Quick Links
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
-                  href="#home"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/" className="hover:text-ap-green transition-colors">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/services" className="hover:text-ap-green transition-colors">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#about"
-                  className="hover:text-ap-green transition-colors"
-                >
-                  About Us
-                </a>
+                <Link href="/service-area" className="hover:text-ap-green transition-colors">
+                  Service Areas
+                </Link>
               </li>
               <li>
-                <a
-                  href="#testimonials"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/about" className="hover:text-ap-green transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/testimonials" className="hover:text-ap-green transition-colors">
                   Testimonials
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/faq" className="hover:text-ap-green transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-ap-green transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Footer Links Column 2 */}
+          {/* Services */}
           <div>
             <h4 className="text-white font-bold mb-4 uppercase text-sm tracking-wider">
               Services
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/services/lawn-care" className="hover:text-ap-green transition-colors">
                   Lawn Care
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/services/landscape-design" className="hover:text-ap-green transition-colors">
                   Landscape Design
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/services/hardscaping" className="hover:text-ap-green transition-colors">
                   Hardscaping
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
-                  Tree & Shrub Care
-                </a>
+                <Link href="/services/tree-shrub-care" className="hover:text-ap-green transition-colors">
+                  Tree &amp; Shrub Care
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
+                <Link href="/services/tree-removal" className="hover:text-ap-green transition-colors">
                   Tree Removal
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  className="hover:text-ap-green transition-colors"
-                >
-                  Seasonal Cleanups
-                </a>
+                <Link href="/services/seasonal-cleanup" className="hover:text-ap-green transition-colors">
+                  Seasonal Cleanup
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Footer Links Column 3 */}
+          {/* Service Areas */}
           <div>
             <h4 className="text-white font-bold mb-4 uppercase text-sm tracking-wider">
-              Connect
+              Service Areas
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-ap-green transition-colors">
-                  Facebook
-                </a>
+                <Link href="/service-area/bradenton" className="hover:text-ap-green transition-colors">
+                  Bradenton
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-ap-green transition-colors">
-                  Instagram
-                </a>
+                <Link href="/service-area/ellenton" className="hover:text-ap-green transition-colors">
+                  Ellenton
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-ap-green transition-colors">
-                  Yelp
-                </a>
+                <Link href="/service-area/palmetto" className="hover:text-ap-green transition-colors">
+                  Palmetto
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-ap-green transition-colors">
-                  Google Reviews
-                </a>
+                <Link href="/service-area/sarasota" className="hover:text-ap-green transition-colors">
+                  Sarasota
+                </Link>
+              </li>
+              <li>
+                <Link href="/service-area/venice" className="hover:text-ap-green transition-colors">
+                  Venice
+                </Link>
+              </li>
+              <li>
+                <Link href="/service-area/osprey" className="hover:text-ap-green transition-colors">
+                  Osprey
+                </Link>
               </li>
             </ul>
           </div>
@@ -173,7 +161,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-stone-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center">
           <p>
-            &copy; {new Date().getFullYear()} AP Landscaping. All rights
+            &copy; {new Date().getFullYear()} ACP Landscaping. All rights
             reserved.
           </p>
           <div className="mt-4 md:mt-0 space-x-4">

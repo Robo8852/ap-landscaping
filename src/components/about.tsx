@@ -42,14 +42,14 @@ export default function About() {
             className="lg:w-1/2"
           >
             <h2 className="text-ap-green font-bold tracking-wider uppercase text-sm mb-2">
-              About AP Landscaping
+              About ACP Landscaping
             </h2>
             <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-ap-bark mb-6">
               Rooted in Quality, Growing Through Trust.
             </h3>
 
             <p className="text-ap-stone text-lg mb-6">
-              Founded on a passion for the outdoors, AP Landscaping has been
+              Founded on a passion for the outdoors, ACP Landscaping has been
               transforming residential and commercial properties for over a
               decade. We believe that a beautiful landscape does more than just
               improve curb appeal—it creates a space for memories, relaxation,
