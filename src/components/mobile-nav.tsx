@@ -95,7 +95,7 @@ export function MobileNav({
               className="flex items-center justify-center gap-3 rounded-xl bg-ap-forest/10 px-4 py-4 min-h-[52px] text-ap-forest font-semibold text-lg transition-colors active:bg-ap-forest/20"
             >
               <Phone className="size-5" strokeWidth={2} />
-              (941) 600-9879
+              Call Now
             </a>
           </motion.div>
 
