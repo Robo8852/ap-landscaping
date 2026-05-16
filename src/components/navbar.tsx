@@ -28,9 +28,9 @@ export default function Navbar() {
       {/* Top Bar (Contact Info) — desktop only */}
       <div className="hidden md:flex bg-ap-forest text-white py-2 px-4 sm:px-6 lg:px-8 text-sm justify-between items-center">
         <div className="flex space-x-6">
-          <a href="tel:5551234567" className="flex items-center space-x-2 hover:text-ap-lime transition-colors">
+          <a href="tel:9416009879" className="flex items-center space-x-2 hover:text-ap-lime transition-colors">
             <Phone size={14} />
-            <span>(555) 123-4567</span>
+            <span>(941) 600-9879</span>
           </a>
           <div className="flex items-center space-x-2">
             <MapPin size={14} />
@@ -115,12 +115,12 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <a
-                  href="tel:5551234567"
+                  href="tel:9416009879"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full mt-3 bg-white border-2 border-ap-forest text-ap-forest px-6 py-3 rounded-full font-semibold min-h-[44px]"
                 >
                   <Phone size={18} />
-                  (555) 123-4567
+                  (941) 600-9879
                 </a>
                 <Link
                   href="/contact"
@@ -138,7 +138,7 @@ export default function Navbar() {
       {/* Mobile Bottom CTA Bar — sticky tap-to-call + quote */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-ap-sand shadow-[0_-2px_10px_rgba(0,0,0,0.08)] px-4 py-3 flex gap-3 safe-bottom">
         <a
-          href="tel:5551234567"
+          href="tel:9416009879"
           className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-ap-forest text-ap-forest rounded-full py-3 font-semibold min-h-[44px]"
         >
           <Phone size={18} />

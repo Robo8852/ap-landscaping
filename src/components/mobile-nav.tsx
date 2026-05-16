@@ -91,11 +91,11 @@ export function MobileNav({
         <div className="flex-shrink-0 border-t border-ap-sand/60 pt-5 pb-2 flex flex-col gap-3">
           <motion.div custom={0} initial="hidden" animate="visible" variants={bottomVariants}>
             <a
-              href="tel:5551234567"
+              href="tel:9416009879"
               className="flex items-center justify-center gap-3 rounded-xl bg-ap-forest/10 px-4 py-4 min-h-[52px] text-ap-forest font-semibold text-lg transition-colors active:bg-ap-forest/20"
             >
               <Phone className="size-5" strokeWidth={2} />
-              (555) 123-4567
+              (941) 600-9879
             </a>
           </motion.div>
 
