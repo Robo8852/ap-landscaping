@@ -161,7 +161,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-stone-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center">
           <p>
-            &copy; {new Date().getFullYear()} ACP Landscaping. All rights
+            &copy; {new Date().getFullYear()} Alex y Carmen Landscaping. All rights
             reserved.
           </p>
           <div className="mt-4 md:mt-0 space-x-4">
