@@ -4,14 +4,52 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { MapPin, Phone, Clock, Mail, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
+
+const initialForm = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  city: "",
+  service: "",
+  message: "",
+};
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const submitQuote = useMutation(api.quotes.submitQuote);
+  const [form, setForm] = useState(initialForm);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
+  function update<K extends keyof typeof initialForm>(key: K, value: string) {
+    setForm((f) => ({ ...f, [key]: value }));
   }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("submitting");
+    setError(null);
+    try {
+      await submitQuote({
+        firstName: form.firstName.trim(),
+        lastName: form.lastName.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || undefined,
+        city: form.city || undefined,
+        service: form.service || undefined,
+        message: form.message.trim() || undefined,
+        source: "contact-page",
+      });
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
+  }
+
+  const submitted = status === "success";
 
   return (
     <>
@@ -60,7 +98,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-ap-bark">Phone</h3>
-                      <a href="tel:5551234567" className="text-ap-stone hover:text-ap-forest transition-colors">(555) 123-4567</a>
+                      <a href="tel:9416009879" className="text-ap-stone hover:text-ap-forest transition-colors">(941) 600-9879</a>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -114,6 +152,8 @@ export default function ContactPage() {
                           type="text"
                           id="firstName"
                           required
+                          value={form.firstName}
+                          onChange={(e) => update("firstName", e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                           placeholder="John"
                         />
@@ -126,6 +166,8 @@ export default function ContactPage() {
                           type="text"
                           id="lastName"
                           required
+                          value={form.lastName}
+                          onChange={(e) => update("lastName", e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                           placeholder="Doe"
                         />
@@ -141,6 +183,8 @@ export default function ContactPage() {
                           type="email"
                           id="email"
                           required
+                          value={form.email}
+                          onChange={(e) => update("email", e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                           placeholder="john@example.com"
                         />
@@ -152,8 +196,10 @@ export default function ContactPage() {
                         <input
                           type="tel"
                           id="phone"
+                          value={form.phone}
+                          onChange={(e) => update("phone", e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
-                          placeholder="(555) 123-4567"
+                          placeholder="(941) 600-9879"
                         />
                       </div>
                     </div>
@@ -164,6 +210,8 @@ export default function ContactPage() {
                       </label>
                       <select
                         id="city"
+                        value={form.city}
+                        onChange={(e) => update("city", e.target.value)}
                         className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                       >
                         <option value="">Select your city...</option>
@@ -183,6 +231,8 @@ export default function ContactPage() {
                       </label>
                       <select
                         id="service"
+                        value={form.service}
+                        onChange={(e) => update("service", e.target.value)}
                         className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                       >
                         <option value="">Select a service...</option>
@@ -203,16 +253,24 @@ export default function ContactPage() {
                       <textarea
                         id="message"
                         rows={4}
+                        value={form.message}
+                        onChange={(e) => update("message", e.target.value)}
                         className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white resize-none"
                         placeholder="Tell us about your property and what you're looking for..."
                       ></textarea>
                     </div>
 
+                    {error && (
+                      <p className="text-sm text-red-600" role="alert">
+                        {error}
+                      </p>
+                    )}
                     <button
                       type="submit"
-                      className="w-full bg-ap-forest hover:bg-ap-forest/90 text-white font-bold py-4 rounded-lg transition-colors shadow-md"
+                      disabled={status === "submitting"}
+                      className="w-full bg-ap-forest hover:bg-ap-forest/90 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-colors shadow-md"
                     >
-                      Send Message
+                      {status === "submitting" ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 )}

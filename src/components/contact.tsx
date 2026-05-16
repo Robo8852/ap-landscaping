@@ -2,8 +2,51 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
+
+const initialForm = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  service: "",
+  message: "",
+};
 
 export default function Contact() {
+  const submitQuote = useMutation(api.quotes.submitQuote);
+  const [form, setForm] = useState(initialForm);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  function update<K extends keyof typeof initialForm>(key: K, value: string) {
+    setForm((f) => ({ ...f, [key]: value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("submitting");
+    setError(null);
+    try {
+      await submitQuote({
+        firstName: form.firstName.trim(),
+        lastName: form.lastName.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || undefined,
+        service: form.service || undefined,
+        message: form.message.trim() || undefined,
+        source: "homepage",
+      });
+      setStatus("success");
+      setForm(initialForm);
+    } catch (err) {
+      setStatus("error");
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <section id="contact" className="py-24 bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +89,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-ap-bark">Phone</h4>
-                  <p className="text-ap-stone">(555) 123-4567</p>
+                  <p className="text-ap-stone">(941) 600-9879</p>
                 </div>
               </div>
               <div className="flex items-start">
@@ -72,7 +115,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-white rounded-2xl shadow-xl p-8 border border-stone-100"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -84,6 +127,9 @@ export default function Contact() {
                   <input
                     type="text"
                     id="firstName"
+                    required
+                    value={form.firstName}
+                    onChange={(e) => update("firstName", e.target.value)}
                     className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                     placeholder="John"
                   />
@@ -98,6 +144,9 @@ export default function Contact() {
                   <input
                     type="text"
                     id="lastName"
+                    required
+                    value={form.lastName}
+                    onChange={(e) => update("lastName", e.target.value)}
                     className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                     placeholder="Doe"
                   />
@@ -115,6 +164,9 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => update("email", e.target.value)}
                     className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                     placeholder="john@example.com"
                   />
@@ -129,8 +181,10 @@ export default function Contact() {
                   <input
                     type="tel"
                     id="phone"
+                    value={form.phone}
+                    onChange={(e) => update("phone", e.target.value)}
                     className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
-                    placeholder="(555) 123-4567"
+                    placeholder="(941) 600-9879"
                   />
                 </div>
               </div>
@@ -144,6 +198,8 @@ export default function Contact() {
                 </label>
                 <select
                   id="service"
+                  value={form.service}
+                  onChange={(e) => update("service", e.target.value)}
                   className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white"
                 >
                   <option value="">Select a service...</option>
@@ -167,16 +223,29 @@ export default function Contact() {
                 <textarea
                   id="message"
                   rows={4}
+                  value={form.message}
+                  onChange={(e) => update("message", e.target.value)}
                   className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white resize-none"
                   placeholder="Tell us about your project..."
                 ></textarea>
               </div>
 
+              {error && (
+                <p className="text-sm text-red-600" role="alert">
+                  {error}
+                </p>
+              )}
+              {status === "success" && (
+                <p className="text-sm text-ap-forest font-medium" role="status">
+                  Thanks! We&apos;ll be in touch within 24 hours.
+                </p>
+              )}
               <button
                 type="submit"
-                className="w-full bg-ap-forest hover:bg-ap-forest/90 text-white font-bold py-4 rounded-lg transition-colors shadow-md"
+                disabled={status === "submitting"}
+                className="w-full bg-ap-forest hover:bg-ap-forest/90 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-colors shadow-md"
               >
-                Send Message
+                {status === "submitting" ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>

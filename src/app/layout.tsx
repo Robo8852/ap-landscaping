@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Outfit } from "next/font/google";
 import "./globals.css";
+import { ConvexClientProvider } from "./convex-client-provider";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -36,6 +37,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "ACP Landscaping",
+    images: [
+      {
+        url: "/images/hero.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "ACP Landscaping — Professional Landscaping Services in Bradenton, FL",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Landscaping Services Bradenton FL | ACP Landscaping",
+    description:
+      "Professional landscaping, lawn care, and hardscaping services serving Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL.",
+    images: ["/images/hero.jpeg"],
   },
   robots: {
     index: true,
@@ -45,7 +61,7 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LandscapingBusiness",
+  "@type": "LocalBusiness",
   name: "ACP Landscaping",
   description:
     "Professional landscaping, lawn care, landscape design, hardscaping, tree care, and seasonal cleanup services serving Bradenton and the Gulf Coast of Florida.",
@@ -55,7 +71,7 @@ const localBusinessSchema = {
     addressRegion: "FL",
     addressCountry: "US",
   },
-  telephone: "(555) 123-4567",
+  telephone: "(941) 600-9879",
   areaServed: [
     "Bradenton, FL",
     "Ellenton, FL",
@@ -91,7 +107,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${dmSerif.variable} font-sans antialiased`}
       >
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );
