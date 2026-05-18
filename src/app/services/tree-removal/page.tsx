@@ -3,11 +3,15 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Tree Removal Services Bradenton FL | ACP Landscaping",
+  title: "Tree Removal Services Bradenton FL | AYC Landscaping",
   description:
     "Safe, professional tree removal services in Bradenton, FL. Stump grinding, emergency tree removal, full cleanup, and lot clearing. Serving Manatee and Sarasota counties.",
+  alternates: {
+    canonical: "/services/tree-removal",
+  },
 };
 
 const included = [
@@ -40,9 +44,33 @@ const whyUs = [
 
 const serviceAreas = ["Bradenton", "Ellenton", "Palmetto", "Sarasota", "Venice", "Osprey"];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Tree Removal",
+  "description": "Safe, professional tree removal services including stump grinding, emergency tree removal, full cleanup, and lot clearing in Manatee and Sarasota counties.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "AYC Landscaping",
+    "telephone": "(941) 600-9879",
+    "url": SITE_URL,
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bradenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Ellenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Palmetto", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Sarasota", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Venice", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Osprey", "containedInPlace": { "@type": "State", "name": "Florida" } },
+  ],
+  "serviceType": "Tree Removal",
+  "url": `${SITE_URL}/services/tree-removal`,
+};
+
 export default function TreeRemovalPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main className="bg-ap-warm">
         {/* Hero */}
@@ -55,7 +83,7 @@ export default function TreeRemovalPage() {
               Tree Removal Services in Bradenton, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              From hazardous limbs to full lot clearing, ACP Landscaping provides safe, efficient
+              From hazardous limbs to full lot clearing, AYC Landscaping provides safe, efficient
               tree removal across Bradenton and the surrounding Gulf Coast communities.
             </p>
             <Link
@@ -98,11 +126,11 @@ export default function TreeRemovalPage() {
           </div>
         </section>
 
-        {/* Why ACP Landscaping */}
+        {/* Why AYC Landscaping */}
         <section className="py-20 bg-ap-warm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-extrabold text-ap-bark mb-12 text-center">
-              Why ACP Landscaping?
+              Why AYC Landscaping?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {whyUs.map((point, i) => (
@@ -147,7 +175,7 @@ export default function TreeRemovalPage() {
               Need a Tree Removed Safely?
             </h2>
             <p className="text-stone-300 mb-8">
-              Contact ACP Landscaping today for a free tree removal estimate. Emergency services
+              Contact AYC Landscaping today for a free tree removal estimate. Emergency services
               available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

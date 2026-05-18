@@ -5,8 +5,11 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Landscaping FAQs | ACP Landscaping Bradenton FL",
-  description: "Frequently asked questions about landscaping services, lawn care, and pricing from ACP Landscaping in Bradenton, Florida.",
+  title: "Landscaping FAQs | AYC Landscaping Bradenton FL",
+  description: "Frequently asked questions about landscaping services, lawn care, and pricing from AYC Landscaping in Bradenton, Florida.",
+  alternates: {
+    canonical: "/faq",
+  },
 };
 
 const faqs = [
@@ -32,7 +35,7 @@ const faqs = [
   },
   {
     q: "Are you licensed and insured?",
-    a: "Yes. ACP Landscaping is fully licensed and carries general liability insurance. We're happy to provide proof of insurance before any job.",
+    a: "Yes. AYC Landscaping is fully licensed and carries general liability insurance. We're happy to provide proof of insurance before any job.",
   },
   {
     q: "Do you work with HOA communities?",
@@ -52,9 +55,26 @@ const faqs = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": a,
+    },
+  })),
+};
+
 export default function FAQPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navbar />
       <main>
         <section className="bg-ap-forest text-white py-20">

@@ -5,9 +5,12 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Services | ACP Landscaping",
+  title: "Our Services | AYC Landscaping",
   description:
-    "Explore ACP Landscaping's full range of professional services in Bradenton, Sarasota, and the Gulf Coast of Florida — from lawn care and landscape design to tree removal and hardscaping.",
+    "Explore AYC Landscaping's full range of professional services in Bradenton, Sarasota, and the Gulf Coast of Florida — from lawn care and landscape design to tree removal and hardscaping.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const services = [
@@ -76,7 +79,7 @@ export default function ServicesPage() {
               Comprehensive Landscaping Services in Florida
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mx-auto">
-              From routine lawn maintenance to full outdoor transformations, ACP Landscaping delivers
+              From routine lawn maintenance to full outdoor transformations, AYC Landscaping delivers
               expert results across Manatee and Sarasota counties.
             </p>
           </div>
@@ -121,7 +124,7 @@ export default function ServicesPage() {
               Not Sure Where to Start?
             </h2>
             <p className="text-stone-300 mb-8">
-              Contact ACP Landscaping for a free consultation and estimate. We'll help you figure out
+              Contact AYC Landscaping for a free consultation and estimate. We'll help you figure out
               exactly what your property needs.
             </p>
             <Link

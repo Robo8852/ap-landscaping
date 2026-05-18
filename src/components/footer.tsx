@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <div className="relative flex items-center justify-center w-10 h-10 rounded-full border-2 border-ap-green bg-white">
                 <span className="text-xl font-black text-ap-forest tracking-tighter">
-                  ACP
+                  AYC
                 </span>
                 <Leaf
                   className="absolute -bottom-1 -right-1 text-ap-green fill-ap-green"
@@ -22,7 +22,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-black text-white leading-none tracking-tight">
-                  ACP
+                  AYC
                 </span>
                 <span className="text-xs font-bold text-ap-green leading-none tracking-widest uppercase">
                   Landscaping
@@ -74,6 +74,11 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="hover:text-ap-green transition-colors">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-ap-green transition-colors">
+                  Privacy
                 </Link>
               </li>
             </ul>
@@ -164,13 +169,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Alex y Carmen Landscaping. All rights
             reserved.
           </p>
-          <div className="mt-4 md:mt-0 space-x-4">
-            <a href="#" className="hover:text-white transition-colors">
+          <div className="mt-4 md:mt-0">
+            <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

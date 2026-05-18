@@ -3,16 +3,47 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, MapPin, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscaping Services Bradenton FL | ACP Landscaping",
+  title: "Landscaping Services Bradenton FL | AYC Landscaping",
   description:
     "Professional landscaping, lawn care, hardscaping, and tree services in Bradenton, FL. Serving Lakewood Ranch, Palma Sola, West Bradenton, and all of Manatee County.",
+  alternates: {
+    canonical: "/service-area/bradenton",
+  },
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AYC Landscaping",
+  "telephone": "(941) 600-9879",
+  "url": SITE_URL,
+  "description": "Professional landscaping, lawn care, hardscaping, and tree services in Bradenton, FL. Serving Lakewood Ranch, Palma Sola, Riverview, West Bradenton, and all of Manatee County.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Bradenton",
+    "containedInPlace": { "@type": "State", "name": "Florida" },
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services in Bradenton FL",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Maintenance", "url": `${SITE_URL}/services/lawn-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscape Design", "url": `${SITE_URL}/services/landscape-design` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardscaping", "url": `${SITE_URL}/services/hardscaping` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree & Shrub Care", "url": `${SITE_URL}/services/tree-shrub-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "url": `${SITE_URL}/services/tree-removal` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal Cleanup", "url": `${SITE_URL}/services/seasonal-cleanup` } },
+    ],
+  },
 };
 
 export default function BradentonPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}
@@ -26,7 +57,7 @@ export default function BradentonPage() {
               Landscaping Services in Bradenton, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              ACP Landscaping is Bradenton's trusted choice for lawn care, landscape design,
+              AYC Landscaping is Bradenton's trusted choice for lawn care, landscape design,
               hardscaping, and tree services. We serve all Bradenton neighborhoods including
               Lakewood Ranch, Palma Sola, Riverview, and beyond.
             </p>
@@ -63,7 +94,7 @@ export default function BradentonPage() {
                   to be both beautiful and resilient.
                 </p>
                 <p className="text-ap-stone mb-6">
-                  ACP Landscaping knows Bradenton's neighborhoods intimately — from the HOA-managed
+                  AYC Landscaping knows Bradenton's neighborhoods intimately — from the HOA-managed
                   communities of Lakewood Ranch to the established residential streets of West
                   Bradenton and Bayshore Gardens. We tailor every service to what your property
                   actually needs.
@@ -150,7 +181,7 @@ export default function BradentonPage() {
               ))}
             </div>
             <blockquote className="font-serif text-xl text-ap-bark italic mb-4">
-              "The ACP team has been maintaining our Lakewood Ranch lawn for two seasons now — the
+              "The AYC team has been maintaining our Lakewood Ranch lawn for two seasons now — the
               results speak for themselves."
             </blockquote>
             <p className="text-ap-stone font-medium">— James T., Bradenton</p>
@@ -164,7 +195,7 @@ export default function BradentonPage() {
               Get a Free Landscaping Estimate in Bradenton
             </h2>
             <p className="text-stone-300 mb-8">
-              Ready to transform your Bradenton property? Contact ACP Landscaping today.
+              Ready to transform your Bradenton property? Contact AYC Landscaping today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

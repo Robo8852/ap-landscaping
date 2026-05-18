@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Sarah Jenkins",
     role: "Homeowner",
-    text: "AP Landscaping completely transformed our backyard. They were professional, on time, and the new patio is exactly what we wanted for summer barbecues.",
+    text: "AYC Landscaping completely transformed our backyard. They were professional, on time, and the new patio is exactly what we wanted for summer barbecues.",
     rating: 5,
   },
   {

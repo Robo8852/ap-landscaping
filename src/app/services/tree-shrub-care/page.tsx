@@ -3,11 +3,15 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Tree & Shrub Care Services Florida | ACP Landscaping",
+  title: "Tree & Shrub Care Services Florida | AYC Landscaping",
   description:
     "Professional tree and shrub care services on Florida's Gulf Coast. Pruning, trimming, health assessments, disease treatment, and fertilization for healthy, beautiful plants.",
+  alternates: {
+    canonical: "/services/tree-shrub-care",
+  },
 };
 
 const included = [
@@ -40,9 +44,33 @@ const whyUs = [
 
 const serviceAreas = ["Bradenton", "Ellenton", "Palmetto", "Sarasota", "Venice", "Osprey"];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Tree & Shrub Care",
+  "description": "Professional tree and shrub care services including pruning, trimming, health assessments, disease treatment, and fertilization for healthy, beautiful plants.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "AYC Landscaping",
+    "telephone": "(941) 600-9879",
+    "url": SITE_URL,
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bradenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Ellenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Palmetto", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Sarasota", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Venice", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Osprey", "containedInPlace": { "@type": "State", "name": "Florida" } },
+  ],
+  "serviceType": "Tree & Shrub Care",
+  "url": `${SITE_URL}/services/tree-shrub-care`,
+};
+
 export default function TreeShrubCarePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main className="bg-ap-warm">
         {/* Hero */}
@@ -56,7 +84,7 @@ export default function TreeShrubCarePage() {
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
               Keep the trees and shrubs on your Gulf Coast property healthy, safe, and beautiful
-              with ACP Landscaping's expert care and maintenance programs.
+              with AYC Landscaping's expert care and maintenance programs.
             </p>
             <Link
               href="/#contact"
@@ -98,11 +126,11 @@ export default function TreeShrubCarePage() {
           </div>
         </section>
 
-        {/* Why ACP Landscaping */}
+        {/* Why AYC Landscaping */}
         <section className="py-20 bg-ap-warm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-extrabold text-ap-bark mb-12 text-center">
-              Why ACP Landscaping?
+              Why AYC Landscaping?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {whyUs.map((point, i) => (
@@ -147,7 +175,7 @@ export default function TreeShrubCarePage() {
               Give Your Trees & Shrubs the Care They Deserve
             </h2>
             <p className="text-stone-300 mb-8">
-              Contact ACP Landscaping today for a free tree and shrub care estimate.
+              Contact AYC Landscaping today for a free tree and shrub care estimate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

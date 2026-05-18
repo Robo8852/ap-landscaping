@@ -3,16 +3,47 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, MapPin, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscaping Services Palmetto FL | ACP Landscaping",
+  title: "Landscaping Services Palmetto FL | AYC Landscaping",
   description:
     "Professional landscaping, lawn care, hardscaping, and tree services in Palmetto, FL. Serving Snead Island, Regatta Pointe, Terra Ceia Bay, and north Manatee County waterfront properties.",
+  alternates: {
+    canonical: "/service-area/palmetto",
+  },
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AYC Landscaping",
+  "telephone": "(941) 600-9879",
+  "url": SITE_URL,
+  "description": "Professional landscaping, lawn care, hardscaping, and tree services in Palmetto, FL. Serving Snead Island, Regatta Pointe, Terra Ceia Bay, and north Manatee County waterfront properties.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Palmetto",
+    "containedInPlace": { "@type": "State", "name": "Florida" },
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services in Palmetto FL",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Maintenance", "url": `${SITE_URL}/services/lawn-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscape Design", "url": `${SITE_URL}/services/landscape-design` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardscaping", "url": `${SITE_URL}/services/hardscaping` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree & Shrub Care", "url": `${SITE_URL}/services/tree-shrub-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "url": `${SITE_URL}/services/tree-removal` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal Cleanup", "url": `${SITE_URL}/services/seasonal-cleanup` } },
+    ],
+  },
 };
 
 export default function PalmettoPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}
@@ -26,7 +57,7 @@ export default function PalmettoPage() {
               Landscaping Services in Palmetto, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              ACP Landscaping specializes in coastal and waterfront landscaping throughout Palmetto,
+              AYC Landscaping specializes in coastal and waterfront landscaping throughout Palmetto,
               Snead Island, and the Terra Ceia Bay area. We understand the unique challenges of
               saltwater-exposed properties in north Manatee County.
             </p>
@@ -63,7 +94,7 @@ export default function PalmettoPage() {
                   costly replacements within a single season.
                 </p>
                 <p className="text-ap-stone mb-6">
-                  ACP Landscaping has deep experience with the coastal properties of Snead Island,
+                  AYC Landscaping has deep experience with the coastal properties of Snead Island,
                   Regatta Pointe, and the exclusive Terra Ceia Bay community. We recommend and
                   install only species that thrive under salt exposure — from sea grape and
                   muhly grass to coontie and native palms.
@@ -147,7 +178,7 @@ export default function PalmettoPage() {
               ))}
             </div>
             <blockquote className="font-serif text-xl text-ap-bark italic mb-4">
-              "Our waterfront property needed someone who understood saltwater exposure — ACP knew
+              "Our waterfront property needed someone who understood saltwater exposure — AYC knew
               exactly what plants to recommend."
             </blockquote>
             <p className="text-ap-stone font-medium">— Robert D., Palmetto</p>
@@ -161,7 +192,7 @@ export default function PalmettoPage() {
               Get a Free Landscaping Estimate in Palmetto
             </h2>
             <p className="text-stone-300 mb-8">
-              Ready to transform your Palmetto property? Contact ACP Landscaping today.
+              Ready to transform your Palmetto property? Contact AYC Landscaping today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

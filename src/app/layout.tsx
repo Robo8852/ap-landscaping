@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Outfit } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "./convex-client-provider";
+import { SITE_URL } from "@/lib/site";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -16,39 +17,40 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Landscaping Services Bradenton FL | ACP Landscaping",
-    template: "%s | ACP Landscaping",
+    default: "Landscaping Services Bradenton FL | AYC Landscaping",
+    template: "%s | AYC Landscaping",
   },
   description:
-    "ACP Landscaping provides professional lawn care, landscape design, hardscaping, tree removal, and seasonal cleanup services in Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL.",
+    "AYC Landscaping provides professional lawn care, landscape design, hardscaping, tree removal, and seasonal cleanup services in Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL.",
   keywords: [
     "landscaping Bradenton FL",
     "lawn care Gulf Coast Florida",
     "landscape design Bradenton",
     "hardscaping Sarasota FL",
     "tree removal Bradenton Florida",
-    "ACP Landscaping",
+    "AYC Landscaping",
   ],
   openGraph: {
-    title: "Landscaping Services Bradenton FL | ACP Landscaping",
+    title: "Landscaping Services Bradenton FL | AYC Landscaping",
     description:
       "Professional landscaping, lawn care, and hardscaping services serving Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL.",
     type: "website",
     locale: "en_US",
-    siteName: "ACP Landscaping",
+    siteName: "AYC Landscaping",
     images: [
       {
         url: "/images/hero.jpeg",
         width: 1200,
         height: 630,
-        alt: "ACP Landscaping — Professional Landscaping Services in Bradenton, FL",
+        alt: "AYC Landscaping — Professional Landscaping Services in Bradenton, FL",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landscaping Services Bradenton FL | ACP Landscaping",
+    title: "Landscaping Services Bradenton FL | AYC Landscaping",
     description:
       "Professional landscaping, lawn care, and hardscaping services serving Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL.",
     images: ["/images/hero.jpeg"],
@@ -62,7 +64,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "ACP Landscaping",
+  name: "AYC Landscaping",
   description:
     "Professional landscaping, lawn care, landscape design, hardscaping, tree care, and seasonal cleanup services serving Bradenton and the Gulf Coast of Florida.",
   address: {

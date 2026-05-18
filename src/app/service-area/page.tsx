@@ -5,9 +5,12 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Landscaping Service Areas in Florida | ACP Landscaping",
+  title: "Landscaping Service Areas in Florida | AYC Landscaping",
   description:
-    "ACP Landscaping serves Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL. Professional lawn care and landscaping throughout Manatee and Sarasota counties.",
+    "AYC Landscaping serves Bradenton, Sarasota, Palmetto, Ellenton, Venice, and Osprey, FL. Professional lawn care and landscaping throughout Manatee and Sarasota counties.",
+  alternates: {
+    canonical: "/service-area",
+  },
 };
 
 const cities = [
@@ -63,7 +66,7 @@ export default function ServiceAreaPage() {
               Landscaping Services Across the Gulf Coast
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl">
-              ACP Landscaping proudly serves homeowners and businesses throughout Manatee and
+              AYC Landscaping proudly serves homeowners and businesses throughout Manatee and
               Sarasota counties, Florida.
             </p>
           </div>

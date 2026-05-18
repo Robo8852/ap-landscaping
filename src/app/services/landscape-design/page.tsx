@@ -3,11 +3,15 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscape Design Bradenton FL | ACP Landscaping",
+  title: "Landscape Design Bradenton FL | AYC Landscaping",
   description:
-    "Custom landscape design services in Bradenton, FL. Native Florida plants, 3D planning, garden beds, and seasonal color. Transform your outdoor space with ACP Landscaping.",
+    "Custom landscape design services in Bradenton, FL. Native Florida plants, 3D planning, garden beds, and seasonal color. Transform your outdoor space with AYC Landscaping.",
+  alternates: {
+    canonical: "/services/landscape-design",
+  },
 };
 
 const included = [
@@ -40,9 +44,33 @@ const whyUs = [
 
 const serviceAreas = ["Bradenton", "Ellenton", "Palmetto", "Sarasota", "Venice", "Osprey"];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Landscape Design",
+  "description": "Custom landscape design services including native Florida plants, 3D planning, garden beds, and seasonal color. Transform your outdoor space.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "AYC Landscaping",
+    "telephone": "(941) 600-9879",
+    "url": SITE_URL,
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bradenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Ellenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Palmetto", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Sarasota", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Venice", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Osprey", "containedInPlace": { "@type": "State", "name": "Florida" } },
+  ],
+  "serviceType": "Landscape Design",
+  "url": `${SITE_URL}/services/landscape-design`,
+};
+
 export default function LandscapeDesignPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main className="bg-ap-warm">
         {/* Hero */}
@@ -98,11 +126,11 @@ export default function LandscapeDesignPage() {
           </div>
         </section>
 
-        {/* Why ACP Landscaping */}
+        {/* Why AYC Landscaping */}
         <section className="py-20 bg-ap-warm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-extrabold text-ap-bark mb-12 text-center">
-              Why ACP Landscaping?
+              Why AYC Landscaping?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {whyUs.map((point, i) => (
@@ -147,7 +175,7 @@ export default function LandscapeDesignPage() {
               Ready to Redesign Your Outdoor Space?
             </h2>
             <p className="text-stone-300 mb-8">
-              Contact ACP Landscaping today for a free landscape design consultation.
+              Contact AYC Landscaping today for a free landscape design consultation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

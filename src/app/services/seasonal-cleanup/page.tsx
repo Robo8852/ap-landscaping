@@ -3,11 +3,15 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Seasonal Cleanup Services Southwest Florida | ACP Landscaping",
+  title: "Seasonal Cleanup Services Southwest Florida | AYC Landscaping",
   description:
     "Professional seasonal cleanup services in Southwest Florida. Spring prep, debris removal, mulching, bed cleanup, and winter prep. Serving Bradenton, Sarasota, and surrounding areas.",
+  alternates: {
+    canonical: "/services/seasonal-cleanup",
+  },
 };
 
 const included = [
@@ -40,9 +44,33 @@ const whyUs = [
 
 const serviceAreas = ["Bradenton", "Ellenton", "Palmetto", "Sarasota", "Venice", "Osprey"];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Seasonal Cleanup",
+  "description": "Professional seasonal cleanup services including spring prep, debris removal, mulching, bed cleanup, and winter prep across Southwest Florida.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "AYC Landscaping",
+    "telephone": "(941) 600-9879",
+    "url": SITE_URL,
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bradenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Ellenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Palmetto", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Sarasota", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Venice", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Osprey", "containedInPlace": { "@type": "State", "name": "Florida" } },
+  ],
+  "serviceType": "Seasonal Cleanup",
+  "url": `${SITE_URL}/services/seasonal-cleanup`,
+};
+
 export default function SeasonalCleanupPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main className="bg-ap-warm">
         {/* Hero */}
@@ -55,7 +83,7 @@ export default function SeasonalCleanupPage() {
               Seasonal Cleanup Services in Southwest Florida
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              Keep your property looking its best through every season with ACP Landscaping's
+              Keep your property looking its best through every season with AYC Landscaping's
               thorough cleanup, mulching, and bed preparation services across Southwest Florida.
             </p>
             <Link
@@ -98,11 +126,11 @@ export default function SeasonalCleanupPage() {
           </div>
         </section>
 
-        {/* Why ACP Landscaping */}
+        {/* Why AYC Landscaping */}
         <section className="py-20 bg-ap-warm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-extrabold text-ap-bark mb-12 text-center">
-              Why ACP Landscaping?
+              Why AYC Landscaping?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {whyUs.map((point, i) => (
@@ -147,7 +175,7 @@ export default function SeasonalCleanupPage() {
               Ready for a Fresh Start This Season?
             </h2>
             <p className="text-stone-300 mb-8">
-              Contact ACP Landscaping today for a free seasonal cleanup estimate.
+              Contact AYC Landscaping today for a free seasonal cleanup estimate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

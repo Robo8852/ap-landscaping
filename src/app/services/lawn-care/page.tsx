@@ -3,11 +3,15 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Lawn Care Services Gulf Coast FL | ACP Landscaping",
+  title: "Lawn Care Services Gulf Coast FL | AYC Landscaping",
   description:
     "Professional lawn care and maintenance services in Bradenton, Sarasota, Palmetto, and the Gulf Coast of Florida. Mowing, fertilization, weed control, aeration, and more.",
+  alternates: {
+    canonical: "/services/lawn-care",
+  },
 };
 
 const included = [
@@ -40,9 +44,33 @@ const whyUs = [
 
 const serviceAreas = ["Bradenton", "Ellenton", "Palmetto", "Sarasota", "Venice", "Osprey"];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Lawn Care & Maintenance",
+  "description": "Professional lawn care and maintenance services including mowing, edging, fertilization, weed control, aeration, and cleanup across Florida's Gulf Coast.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "AYC Landscaping",
+    "telephone": "(941) 600-9879",
+    "url": SITE_URL,
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bradenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Ellenton", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Palmetto", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Sarasota", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Venice", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "City", "name": "Osprey", "containedInPlace": { "@type": "State", "name": "Florida" } },
+  ],
+  "serviceType": "Lawn Care",
+  "url": `${SITE_URL}/services/lawn-care`,
+};
+
 export default function LawnCarePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main className="bg-ap-warm">
         {/* Hero */}
@@ -55,7 +83,7 @@ export default function LawnCarePage() {
               Lawn Care & Maintenance Services in Florida
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              Keep your lawn lush, healthy, and beautiful year-round with ACP Landscaping's
+              Keep your lawn lush, healthy, and beautiful year-round with AYC Landscaping's
               professional lawn care services across the Gulf Coast.
             </p>
             <Link
@@ -98,11 +126,11 @@ export default function LawnCarePage() {
           </div>
         </section>
 
-        {/* Why ACP Landscaping */}
+        {/* Why AYC Landscaping */}
         <section className="py-20 bg-ap-warm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-extrabold text-ap-bark mb-12 text-center">
-              Why ACP Landscaping?
+              Why AYC Landscaping?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {whyUs.map((point, i) => (
@@ -145,7 +173,7 @@ export default function LawnCarePage() {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-extrabold mb-4">Ready to Get Started?</h2>
             <p className="text-stone-300 mb-8">
-              Contact ACP Landscaping today for a free lawn care estimate.
+              Contact AYC Landscaping today for a free lawn care estimate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

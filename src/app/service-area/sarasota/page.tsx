@@ -3,16 +3,47 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, MapPin, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscaping Services Sarasota FL | ACP Landscaping",
+  title: "Landscaping Services Sarasota FL | AYC Landscaping",
   description:
     "Professional landscaping, lawn care, hardscaping, and tree services in Sarasota, FL. Serving Siesta Key, Palmer Ranch, Gulf Gate Estates, Southgate, Bee Ridge, and all of Sarasota County.",
+  alternates: {
+    canonical: "/service-area/sarasota",
+  },
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AYC Landscaping",
+  "telephone": "(941) 600-9879",
+  "url": SITE_URL,
+  "description": "Professional landscaping, lawn care, hardscaping, and tree services in Sarasota, FL. Serving Siesta Key, Palmer Ranch, Gulf Gate Estates, Southgate, Bee Ridge, and all of Sarasota County.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Sarasota",
+    "containedInPlace": { "@type": "State", "name": "Florida" },
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services in Sarasota FL",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Maintenance", "url": `${SITE_URL}/services/lawn-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscape Design", "url": `${SITE_URL}/services/landscape-design` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardscaping", "url": `${SITE_URL}/services/hardscaping` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree & Shrub Care", "url": `${SITE_URL}/services/tree-shrub-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "url": `${SITE_URL}/services/tree-removal` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal Cleanup", "url": `${SITE_URL}/services/seasonal-cleanup` } },
+    ],
+  },
 };
 
 export default function SarasotaPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}
@@ -26,7 +57,7 @@ export default function SarasotaPage() {
               Landscaping Services in Sarasota, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              ACP Landscaping delivers premium landscape design, lawn care, and hardscaping to
+              AYC Landscaping delivers premium landscape design, lawn care, and hardscaping to
               Sarasota's upscale residential market. From Siesta Key to Palmer Ranch to the
               historic downtown corridor, we create landscapes that match the sophistication of
               your property.
@@ -66,7 +97,7 @@ export default function SarasotaPage() {
                 </p>
                 <p className="text-ap-stone mb-6">
                   Sarasota's deep appreciation for tropical and Florida-native plant palettes sets
-                  it apart from other markets. ACP Landscaping's design team is well-versed in
+                  it apart from other markets. AYC Landscaping's design team is well-versed in
                   creating lush, low-maintenance landscapes featuring bird-of-paradise, ornamental
                   grasses, live oaks, and native flowering species that thrive in Sarasota's
                   climate without excessive water use.
@@ -154,7 +185,7 @@ export default function SarasotaPage() {
               ))}
             </div>
             <blockquote className="font-serif text-xl text-ap-bark italic mb-4">
-              "ACP transformed our Palmer Ranch property with a stunning tropical landscape that
+              "AYC transformed our Palmer Ranch property with a stunning tropical landscape that
               thrives in the Florida heat."
             </blockquote>
             <p className="text-ap-stone font-medium">— Linda K., Sarasota</p>
@@ -168,7 +199,7 @@ export default function SarasotaPage() {
               Get a Free Landscaping Estimate in Sarasota
             </h2>
             <p className="text-stone-300 mb-8">
-              Ready to elevate your Sarasota property? Contact ACP Landscaping today.
+              Ready to elevate your Sarasota property? Contact AYC Landscaping today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

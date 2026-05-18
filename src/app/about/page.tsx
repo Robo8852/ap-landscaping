@@ -5,8 +5,11 @@ import { CheckCircle2, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About ACP Landscaping | Bradenton, FL",
-  description: "Learn about ACP Landscaping — a locally owned and operated landscaping company serving Bradenton, Sarasota, and the Gulf Coast of Florida.",
+  title: "About AYC Landscaping | Bradenton, FL",
+  description: "Learn about AYC Landscaping — a locally owned and operated landscaping company serving Bradenton, Sarasota, and the Gulf Coast of Florida.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
@@ -19,7 +22,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-ap-lime font-semibold uppercase tracking-wider text-sm mb-3">Our Story</p>
             <h1 className="font-serif text-4xl md:text-5xl font-extrabold mb-4">
-              About ACP Landscaping
+              About AYC Landscaping
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl">
               A locally owned and operated landscaping company rooted in the Bradenton community and dedicated to the Gulf Coast.
@@ -36,7 +39,7 @@ export default function AboutPage() {
                   Rooted in Quality, Growing Through Trust
                 </h2>
                 <p className="text-ap-stone text-lg mb-4">
-                  ACP Landscaping was founded on a simple belief: every property deserves professional care. Based in Bradenton, Florida, we've built our reputation one yard at a time — through consistent results, honest pricing, and respect for the properties we maintain.
+                  AYC Landscaping was founded on a simple belief: every property deserves professional care. Based in Bradenton, Florida, we've built our reputation one yard at a time — through consistent results, honest pricing, and respect for the properties we maintain.
                 </p>
                 <p className="text-ap-stone text-lg mb-4">
                   We understand what Florida landscapes need. The subtropical heat, the hurricane season, the sandy soils, the HOA requirements — we've worked through all of it across Manatee and Sarasota counties. That local knowledge is what sets us apart.
@@ -63,7 +66,7 @@ export default function AboutPage() {
               <div>
                 <img
                   src="/images/about-section.jpeg"
-                  alt="ACP Landscaping team at work in Bradenton FL"
+                  alt="AYC Landscaping team at work in Bradenton FL"
                   className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
                 />
               </div>

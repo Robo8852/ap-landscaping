@@ -56,13 +56,13 @@ export function MobileNav({
           <SheetTitle className="flex items-center gap-3">
             <Image
               src="/logo.png"
-              alt="AP Landscaping"
+              alt="AYC Landscaping"
               width={44}
               height={44}
               className="rounded-full"
             />
             <span className="font-serif text-ap-bark text-xl tracking-tight">
-              AP Landscaping
+              AYC Landscaping
             </span>
           </SheetTitle>
         </SheetHeader>

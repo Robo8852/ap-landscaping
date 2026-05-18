@@ -3,16 +3,47 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, MapPin, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscaping Services Osprey FL | ACP Landscaping",
+  title: "Landscaping Services Osprey FL | AYC Landscaping",
   description:
     "Professional landscaping, lawn care, hardscaping, and tree services in Osprey, FL. Serving The Oaks, Pine Ranch, Casey Key, and the Intracoastal corridor between Venice and Sarasota.",
+  alternates: {
+    canonical: "/service-area/osprey",
+  },
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AYC Landscaping",
+  "telephone": "(941) 600-9879",
+  "url": SITE_URL,
+  "description": "Professional landscaping, lawn care, hardscaping, and tree services in Osprey, FL. Serving The Oaks, Pine Ranch, Casey Key, and the Intracoastal corridor between Venice and Sarasota.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Osprey",
+    "containedInPlace": { "@type": "State", "name": "Florida" },
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services in Osprey FL",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Maintenance", "url": `${SITE_URL}/services/lawn-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscape Design", "url": `${SITE_URL}/services/landscape-design` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardscaping", "url": `${SITE_URL}/services/hardscaping` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree & Shrub Care", "url": `${SITE_URL}/services/tree-shrub-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "url": `${SITE_URL}/services/tree-removal` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal Cleanup", "url": `${SITE_URL}/services/seasonal-cleanup` } },
+    ],
+  },
 };
 
 export default function OspreyPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}
@@ -26,7 +57,7 @@ export default function OspreyPage() {
               Landscaping Services in Osprey, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              ACP Landscaping serves the quiet coastal community of Osprey with the attention to
+              AYC Landscaping serves the quiet coastal community of Osprey with the attention to
               detail that upscale properties in The Oaks, Pine Ranch, and Casey Key demand. We
               bring estate-level care to every property we maintain along the Intracoastal
               corridor.
@@ -65,7 +96,7 @@ export default function OspreyPage() {
                   one of Florida's last undeveloped barrier islands.
                 </p>
                 <p className="text-ap-stone mb-6">
-                  Properties here require the highest level of landscape care. ACP Landscaping
+                  Properties here require the highest level of landscape care. AYC Landscaping
                   understands that detail matters — from perfectly edged turf lines to
                   thoughtfully pruned specimen trees, every element of your outdoor space should
                   reflect the quality of the property itself. We bring that standard of excellence
@@ -150,7 +181,7 @@ export default function OspreyPage() {
               ))}
             </div>
             <blockquote className="font-serif text-xl text-ap-bark italic mb-4">
-              "ACP maintains our Osprey estate property and the attention to detail is
+              "AYC maintains our Osprey estate property and the attention to detail is
               exceptional."
             </blockquote>
             <p className="text-ap-stone font-medium">— Catherine B., Osprey</p>
@@ -164,7 +195,7 @@ export default function OspreyPage() {
               Get a Free Landscaping Estimate in Osprey
             </h2>
             <p className="text-stone-300 mb-8">
-              Ready to bring estate-level care to your Osprey property? Contact ACP Landscaping
+              Ready to bring estate-level care to your Osprey property? Contact AYC Landscaping
               today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

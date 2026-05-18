@@ -3,16 +3,47 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, MapPin, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscaping Services Venice FL | ACP Landscaping",
+  title: "Landscaping Services Venice FL | AYC Landscaping",
   description:
     "Professional landscaping, lawn care, hardscaping, and tree services in Venice, FL. Serving Venice Gardens, Southwood, Pelican Pointe, Nokomis, and south Sarasota County.",
+  alternates: {
+    canonical: "/service-area/venice",
+  },
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AYC Landscaping",
+  "telephone": "(941) 600-9879",
+  "url": SITE_URL,
+  "description": "Professional landscaping, lawn care, hardscaping, and tree services in Venice, FL. Serving Venice Gardens, Southwood, Pelican Pointe, Nokomis, and south Sarasota County.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Venice",
+    "containedInPlace": { "@type": "State", "name": "Florida" },
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services in Venice FL",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Maintenance", "url": `${SITE_URL}/services/lawn-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscape Design", "url": `${SITE_URL}/services/landscape-design` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardscaping", "url": `${SITE_URL}/services/hardscaping` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree & Shrub Care", "url": `${SITE_URL}/services/tree-shrub-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "url": `${SITE_URL}/services/tree-removal` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal Cleanup", "url": `${SITE_URL}/services/seasonal-cleanup` } },
+    ],
+  },
 };
 
 export default function VenicePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}
@@ -26,7 +57,7 @@ export default function VenicePage() {
               Landscaping Services in Venice, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              ACP Landscaping brings reliable, high-quality lawn care and landscaping to Venice and
+              AYC Landscaping brings reliable, high-quality lawn care and landscaping to Venice and
               south Sarasota County. We understand the curb appeal expectations of Venice Gardens,
               Pelican Pointe, and the historic downtown Venice community.
             </p>
@@ -64,7 +95,7 @@ export default function VenicePage() {
                   involvement from the owner.
                 </p>
                 <p className="text-ap-stone mb-6">
-                  ACP Landscaping provides that dependability. We show up on schedule, communicate
+                  AYC Landscaping provides that dependability. We show up on schedule, communicate
                   clearly, and deliver results that meet the high standards Venice neighborhoods
                   expect. Whether it's regular mowing and edging in Southwood, seasonal color
                   rotations in Venice Gardens, or shrub trimming around Pelican Pointe's gated
@@ -149,7 +180,7 @@ export default function VenicePage() {
               ))}
             </div>
             <blockquote className="font-serif text-xl text-ap-bark italic mb-4">
-              "Reliable, professional, and always on time. ACP keeps our Venice Gardens property
+              "Reliable, professional, and always on time. AYC keeps our Venice Gardens property
               looking its best year-round."
             </blockquote>
             <p className="text-ap-stone font-medium">— Tom W., Venice</p>
@@ -163,7 +194,7 @@ export default function VenicePage() {
               Get a Free Landscaping Estimate in Venice
             </h2>
             <p className="text-stone-300 mb-8">
-              Ready to keep your Venice property looking its best? Contact ACP Landscaping today.
+              Ready to keep your Venice property looking its best? Contact AYC Landscaping today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

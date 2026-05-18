@@ -3,16 +3,47 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CheckCircle2, Phone, MapPin, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Landscaping Services Ellenton FL | ACP Landscaping",
+  title: "Landscaping Services Ellenton FL | AYC Landscaping",
   description:
     "Professional landscaping, lawn care, hardscaping, and tree services in Ellenton, FL. Serving Ellenton, Parrish, Rubonia, and the Manatee River corridor.",
+  alternates: {
+    canonical: "/service-area/ellenton",
+  },
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "AYC Landscaping",
+  "telephone": "(941) 600-9879",
+  "url": SITE_URL,
+  "description": "Professional landscaping, lawn care, hardscaping, and tree services in Ellenton, FL. Serving Ellenton, Parrish, Rubonia, and the Manatee River corridor.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Ellenton",
+    "containedInPlace": { "@type": "State", "name": "Florida" },
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services in Ellenton FL",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Care & Maintenance", "url": `${SITE_URL}/services/lawn-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscape Design", "url": `${SITE_URL}/services/landscape-design` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardscaping", "url": `${SITE_URL}/services/hardscaping` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree & Shrub Care", "url": `${SITE_URL}/services/tree-shrub-care` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tree Removal", "url": `${SITE_URL}/services/tree-removal` } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal Cleanup", "url": `${SITE_URL}/services/seasonal-cleanup` } },
+    ],
+  },
 };
 
 export default function EllentonPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Navbar />
       <main>
         {/* Hero */}
@@ -26,7 +57,7 @@ export default function EllentonPage() {
               Landscaping Services in Ellenton, FL
             </h1>
             <p className="text-stone-300 text-lg max-w-2xl mb-8">
-              ACP Landscaping serves Ellenton and the surrounding communities along the Manatee
+              AYC Landscaping serves Ellenton and the surrounding communities along the Manatee
               River. From new construction lots to established homes near Parrish and Rubonia, we
               handle it all.
             </p>
@@ -66,7 +97,7 @@ export default function EllentonPage() {
                 <p className="text-ap-stone mb-6">
                   Whether you're breaking ground on a new build in Parrish, refreshing an
                   established yard in Rubonia, or recovering from storm damage along the Moccasin
-                  Wallow area, ACP Landscaping has the experience to get the job done right.
+                  Wallow area, AYC Landscaping has the experience to get the job done right.
                 </p>
                 <ul className="space-y-3">
                   {[
@@ -147,7 +178,7 @@ export default function EllentonPage() {
               ))}
             </div>
             <blockquote className="font-serif text-xl text-ap-bark italic mb-4">
-              "We hired ACP to clean up our yard after the hurricane season — they did an incredible
+              "We hired AYC to clean up our yard after the hurricane season — they did an incredible
               job clearing everything quickly."
             </blockquote>
             <p className="text-ap-stone font-medium">— Maria S., Ellenton</p>
@@ -161,7 +192,7 @@ export default function EllentonPage() {
               Get a Free Landscaping Estimate in Ellenton
             </h2>
             <p className="text-stone-300 mb-8">
-              Ready to transform your Ellenton property? Contact ACP Landscaping today.
+              Ready to transform your Ellenton property? Contact AYC Landscaping today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

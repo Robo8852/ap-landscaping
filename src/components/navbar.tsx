@@ -54,11 +54,11 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <div className="relative flex items-center justify-center w-12 h-12 rounded-full border-4 border-ap-green bg-white">
-                <span className="text-2xl font-black text-ap-forest tracking-tighter">ACP</span>
+                <span className="text-2xl font-black text-ap-forest tracking-tighter">AYC</span>
                 <Leaf className="absolute -bottom-1 -right-1 text-ap-green fill-ap-green" size={20} />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black text-ap-forest leading-none tracking-tight">ACP</span>
+                <span className="text-xl font-black text-ap-forest leading-none tracking-tight">AYC</span>
                 <span className="text-sm font-bold text-ap-green leading-none tracking-widest uppercase">Landscaping</span>
               </div>
             </Link>
