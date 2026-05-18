@@ -1,5 +1,6 @@
 import { mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { internal } from "./_generated/api";
 
 export const submitQuote = mutation({
   args: {
@@ -13,6 +14,8 @@ export const submitQuote = mutation({
     source: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    return await ctx.db.insert("quotes", args);
+    const id = await ctx.db.insert("quotes", args);
+    await ctx.scheduler.runAfter(0, internal.emails.notifyOwner, args);
+    return id;
   },
 });

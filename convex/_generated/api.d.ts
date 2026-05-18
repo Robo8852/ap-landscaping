@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as emails from "../emails.js";
 import type * as quotes from "../quotes.js";
 
 import type {
@@ -17,6 +18,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  emails: typeof emails;
   quotes: typeof quotes;
 }>;
 
