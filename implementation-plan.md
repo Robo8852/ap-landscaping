@@ -1,4 +1,4 @@
-# AP Landscaping — Implementation Plan
+# AYC Landscaping — Implementation Plan
 
 ## Current State
 - Project scaffolded with full tech stack (Next.js 16, TS strict, Tailwind 4, shadcn, Framer Motion, Lucide, Convex installed)

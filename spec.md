@@ -1,4 +1,4 @@
-# AP Landscaping — Website Spec
+# AYC Landscaping — Website Spec
 
 ## Overview
 Local landscaping company website. **Mobile-first** design priority — most traffic will be phone users looking to call or request a quote.

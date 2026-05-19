@@ -1,4 +1,4 @@
-# AP Landscaping — Progress Log
+# AYC Landscaping — Progress Log
 
 ## Project Setup (Complete)
 - Scaffolded Next.js 16 with App Router, TypeScript strict mode

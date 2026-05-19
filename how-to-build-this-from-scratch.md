@@ -45,7 +45,7 @@ This is a **single-page marketing website**. There's one URL (`/`), and users sc
 ## Step 1: Create the Next.js Project
 
 ```bash
-npx create-next-app@latest ap-landscaping
+npx create-next-app@latest ayc-landscaping
 ```
 
 During setup, you say yes to: TypeScript, Tailwind CSS, App Router, and `src/` directory. This gives you a working project with all the boilerplate already configured.
@@ -146,7 +146,7 @@ Next.js downloads these fonts at build time (no flicker, no external requests). 
 ## Step 4: Understand the File Structure
 
 ```
-ap-landscaping/
+ayc-landscaping/
 ├── public/                      ← Static files (images, logo, favicon)
 │   ├── images/
 │   │   ├── hero.jpeg
@@ -207,7 +207,7 @@ This file also sets the page `<title>` and `<meta>` description:
 
 ```tsx
 export const metadata: Metadata = {
-  title: "AP Landscaping",
+  title: "AYC Landscaping",
   description: "Professional landscaping services",
 };
 ```
@@ -427,7 +427,7 @@ Anything in the `public/` folder is served directly. No imports needed — just 
 
 ```tsx
 <img src="/images/hero.jpeg" alt="Beautiful landscaped garden" />
-<img src="/logo.png" alt="AP Landscaping logo" />
+<img src="/logo.png" alt="AYC Landscaping logo" />
 ```
 
 Our image structure:
