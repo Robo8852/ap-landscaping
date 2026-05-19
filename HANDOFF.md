@@ -1,35 +1,32 @@
 # Handoff — Next Session
 
-Resume after commit `65548bc` (mobile "Call Now" button labels). Site is live at `https://ap-landscaping.vercel.app`.
+Resume after commit `aeba4a3` (contact page server/client split + privacy page). Site is live at `https://ap-landscaping.vercel.app` until domain registration (§3a) completes.
 
 ---
 
-## What shipped this session (recap)
+## What shipped since this doc was last updated
 
-- `cab61b3` — Footer copyright → "Alex y Carmen Landscaping" (legal name)
-- `76dbd01` — Real phone `(941) 600-9879` wired into every CTA across the site (navbar, mobile nav, sticky bottom bar, CTA banner, all 6 service pages, all 6 service-area pages)
-- `0b36baa` — Deleted `/navbar/{floating,solid,split,top-bar}` mockup pages (were unlinked + indexable with placeholder numbers)
-- `65548bc` — Mobile drawer call buttons relabeled "Call Now" (were rendering the digits as the button text)
-
-Live state confirmed: zero `(555) 123-4567` anywhere in the codebase. Every callable CTA dials the real number.
+- `d41cd4a` — Quote form wired to Convex + Vercel production deploy
+- `dfda747` — Quote submissions trigger Resend email to owner (initial wiring)
+- `3cc4f02` — Resend test mode: emails route to personal inbox until domain is verified
+- `0d9cfba` — Centralize `SITE_URL` and migrate domain to `ayclandscaping.com`
+- `cfb7f05` — New `specs/` map (README + domains + seo-metadata) + finish AYC brand rename in planning docs
+- `aeba4a3` — Contact page split into server + client (enables canonical metadata) + new `/privacy` page
 
 ---
 
 ## Read first — working tree state
 
-There's uncommitted work sitting in the tree from prior sessions. **All of it is SEO-related**:
+Single meaningful uncommitted change:
 
 ```
-M public/robots.txt
-M public/sitemap.xml
-M src/app/faq/page.tsx
-M src/app/service-area/{bradenton,ellenton,osprey,palmetto,sarasota,venice}/page.tsx
-M src/app/services/{hardscaping,landscape-design,lawn-care,seasonal-cleanup,tree-removal,tree-shrub-care}/page.tsx
+ D convex/emails.ts
+ M convex/quotes.ts
 ```
 
-Each page file adds a JSON-LD `Service` or `LocalBusiness` schema block. Most of it references absolute URLs and **is gated on the domain decision (§3)**. Do not commit blindly — read `seo-imp.md` against `seo-spec.md` first.
+The Resend email wiring is **stripped in the working tree** but still functional at HEAD. Production keeps sending emails to `leoreyes@costadelsolweb.com` (test mode) because deployments read from HEAD. The strip is intentional — it'll be replaced via the agency-route Resend setup (§3b + §3c). Do not commit this strip without redoing the wiring first.
 
-Untracked planning docs (`!IMPORTANT.md`, `CLAUDE.md`, `HANDOFF.md`, `seo-imp.md`, `seo-spec.md`, `skills-lock.json`, `.agents/`) — leave alone.
+Untracked planning/config files (`!IMPORTANT.md`, `.agents/`, `contract.md`, `skills-lock.json`, `spec-maps-what-where-how.docx`) — leave alone.
 
 ---
 
@@ -45,37 +42,27 @@ Untracked planning docs (`!IMPORTANT.md`, `CLAUDE.md`, `HANDOFF.md`, `seo-imp.md
 
 Start with honeypot. Skip the rate limit unless needed.
 
-### 1b. Privacy notice (one paragraph)
+### 1b. Privacy notice (resolved via /privacy page)
 
-**Status:** Quote form collects name, phone, email, address. Nowhere on the site says what's done with it.
+**Status:** Done. `/privacy` page (`src/app/privacy/page.tsx`) shipped in `aeba4a3` covers what's collected, what it's used for, and how to request deletion.
 
-Not legally required in FL for a small landscaping business, but standard trust signal. One short paragraph on `/contact` (under the form, or linked footer): what's collected, what it's used for (responding to the inquiry, nothing else), how to request deletion.
-
-**Needs user sign-off on wording before shipping.**
+**Remaining follow-up:** verify the footer or contact page links to `/privacy` so it's discoverable. The page exists at the URL but may not be linked from anywhere yet.
 
 ---
 
 ## 2. Blocked on client-side decisions
 
-### 2a. Domain (resolved)
+### 2a. Domain (decision resolved, registration pending)
 
-Domain decision resolved to `ayclandscaping.com` (was: `acplandscaping.com`, `bradentonlandscaping.com`).
+Domain decision resolved to `ayclandscaping.com` (was: `acplandscaping.com`, `bradentonlandscaping.com`). Registration + Vercel setup is §3a.
 
-Blocks: most of the uncommitted SEO work, email sender domain (§2b), GMB schema (§2c).
+Follow-on work: domain registration (§3a), Resend redo (§3b + §3c), GMB schema (§2c).
 
 ### 2b. Form notification emails
 
-**Status:** Quote submissions land in Convex `quotes` table only. No email goes out. Client has to log into the Convex dashboard to see leads.
+**Status:** Wired and functional at HEAD. Quote submissions trigger a Resend email to the owner via `convex/emails.ts:notifyOwner`. Currently routes to `leoreyes@costadelsolweb.com` from `onboarding@resend.dev` (Resend's test sender — works because the AYC domain isn't verified in Resend yet).
 
-**Blocked on (in order):**
-1. Domain (§2a) — for sender DNS records
-2. Client business email — none provisioned yet
-3. Email service signup — recommend Resend (3K emails/mo free, Convex's documented pairing)
-
-**Implementation when unblocked:**
-1. `npx convex env set RESEND_API_KEY <key>`
-2. New `convex/emails.ts` — internal action that calls Resend with all form fields + a reply-to mailto
-3. `convex/quotes.ts:submitQuote` → `await ctx.scheduler.runAfter(0, internal.emails.notifyOwner, args)` after the insert (action vs mutation: mutations can't  make external API calls; actions can; scheduling lets the form return fast while email goes out async)
+**Production-grade redo planned:** see §3b + §3c. Working tree currently has the wiring stripped pending the redo; production is unaffected (deploys from HEAD).
 
 ### 2c. Google Business Profile
 
@@ -83,6 +70,41 @@ Not created. Required for `sameAs` in LocalBusiness schema and (separately) for 
 
 ---
 
+## 3. Deferred this session
+
+### 3a. Domain registration + Vercel DNS
+
+Decision is resolved (§2a) but `ayclandscaping.com` is not yet registered. When ready:
+
+1. Register `ayclandscaping.com` — Vercel directly, or external registrar (Cloudflare / Porkbun / Namecheap) for portability
+2. Add domain to Vercel project → Settings → Domains
+3. DNS at the registrar:
+   - Apex: A record → `76.76.21.21`
+   - `www`: CNAME → `cname.vercel-dns.com`
+   (or delegate nameservers to `ns1.vercel-dns.com` / `ns2.vercel-dns.com`)
+4. Wait for SSL auto-provision; configure canonical `www → apex` to match `SITE_URL`
+
+After this is live, update line 3 of this doc (still points at `ap-landscaping.vercel.app`).
+
+### 3b. Resend setup via agency-route pattern
+
+Goal: one Resend account, multiple verified client domains. For AYC:
+
+1. Add `ayclandscaping.com` as a sending domain in Resend
+2. Add DNS at registrar: SPF, DKIM (2× CNAME), return-path
+3. Generate a project-specific API key (don't reuse a global key)
+4. Pick from-address — e.g. `quotes@ayclandscaping.com`
+5. Get owner's real email (replaces `leoreyes@costadelsolweb.com` test placeholder)
+6. `npx convex env set RESEND_API_KEY ...` + `OWNER_EMAIL ...`
+
+### 3c. Re-wire quote-form email pipeline
+
+After 3a + 3b: restore the wiring.
+
+- `convex/emails.ts` exists at HEAD; currently deleted in working tree
+- `convex/quotes.ts` at HEAD still schedules `internal.emails.notifyOwner`; working tree has the line stripped
+
+Path: `git restore --source=HEAD -- convex/emails.ts convex/quotes.ts`, then edit `emails.ts` to swap `OWNER_INBOX` and `FROM_ADDRESS` to the verified setup. Current committed wiring still ships from production (sends test emails to `leoreyes@costadelsolweb.com`) so no rush.
 
 ---
 
