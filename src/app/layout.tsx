@@ -56,8 +56,8 @@ export const metadata: Metadata = {
     images: ["/images/hero.jpeg"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
 };
 
