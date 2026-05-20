@@ -120,10 +120,6 @@ export default function EllentonPage() {
                 <h3 className="font-bold text-ap-bark text-lg mb-4">Ellenton Service Info</h3>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <span className="font-semibold text-ap-bark">ZIP Codes Served:</span>
-                    <p className="text-ap-stone mt-1">34222</p>
-                  </div>
-                  <div>
                     <span className="font-semibold text-ap-bark">Neighborhoods Served:</span>
                     <p className="text-ap-stone mt-1">
                       Ellenton, Parrish, Rubonia, Moccasin Wallow area

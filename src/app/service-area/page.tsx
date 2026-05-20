@@ -18,37 +18,31 @@ const cities = [
     name: "Bradenton",
     slug: "bradenton",
     desc: "Our home base — serving all of Bradenton and Manatee County.",
-    zips: "34201, 34202, 34203, 34205, 34208, 34209, 34210, 34211",
   },
   {
     name: "Ellenton",
     slug: "ellenton",
     desc: "Ellenton and surrounding communities along the Manatee River.",
-    zips: "34222",
   },
   {
     name: "Palmetto",
     slug: "palmetto",
     desc: "Palmetto and north Manatee County residential and commercial properties.",
-    zips: "34220, 34221",
   },
   {
     name: "Sarasota",
     slug: "sarasota",
     desc: "All of Sarasota city and surrounding neighborhoods.",
-    zips: "34230, 34231, 34232, 34233, 34234, 34235, 34236, 34237, 34238, 34239, 34241, 34242",
   },
   {
     name: "Venice",
     slug: "venice",
     desc: "Venice and south Sarasota County properties.",
-    zips: "34285, 34292, 34293",
   },
   {
     name: "Osprey",
     slug: "osprey",
     desc: "Osprey and the Intracoastal corridor south of Sarasota.",
-    zips: "34229",
   },
 ];
 
@@ -86,8 +80,7 @@ export default function ServiceAreaPage() {
                       {city.name}, FL
                     </h2>
                   </div>
-                  <p className="text-ap-stone text-sm mb-3">{city.desc}</p>
-                  <p className="text-xs text-ap-stone/70">ZIP: {city.zips}</p>
+                  <p className="text-ap-stone text-sm">{city.desc}</p>
                 </Link>
               ))}
             </div>

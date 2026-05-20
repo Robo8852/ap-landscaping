@@ -120,10 +120,6 @@ export default function PalmettoPage() {
                 <h3 className="font-bold text-ap-bark text-lg mb-4">Palmetto Service Info</h3>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <span className="font-semibold text-ap-bark">ZIP Codes Served:</span>
-                    <p className="text-ap-stone mt-1">34220, 34221</p>
-                  </div>
-                  <div>
                     <span className="font-semibold text-ap-bark">Neighborhoods Served:</span>
                     <p className="text-ap-stone mt-1">
                       Palmetto, Snead Island, Regatta Pointe, Terra Ceia Bay

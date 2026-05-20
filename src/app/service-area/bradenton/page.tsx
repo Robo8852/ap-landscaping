@@ -120,12 +120,6 @@ export default function BradentonPage() {
                 <h3 className="font-bold text-ap-bark text-lg mb-4">Bradenton Service Info</h3>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <span className="font-semibold text-ap-bark">ZIP Codes Served:</span>
-                    <p className="text-ap-stone mt-1">
-                      34201, 34202, 34203, 34205, 34208, 34209, 34210, 34211
-                    </p>
-                  </div>
-                  <div>
                     <span className="font-semibold text-ap-bark">Neighborhoods Served:</span>
                     <p className="text-ap-stone mt-1">
                       Lakewood Ranch, Palma Sola, Riverview, West Bradenton, Bayshore Gardens,

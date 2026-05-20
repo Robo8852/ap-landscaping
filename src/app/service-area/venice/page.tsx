@@ -122,10 +122,6 @@ export default function VenicePage() {
                 <h3 className="font-bold text-ap-bark text-lg mb-4">Venice Service Info</h3>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <span className="font-semibold text-ap-bark">ZIP Codes Served:</span>
-                    <p className="text-ap-stone mt-1">34285, 34292, 34293</p>
-                  </div>
-                  <div>
                     <span className="font-semibold text-ap-bark">Neighborhoods Served:</span>
                     <p className="text-ap-stone mt-1">
                       Downtown Venice, Venice Gardens, Southwood, Pelican Pointe, Nokomis

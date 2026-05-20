@@ -123,10 +123,6 @@ export default function OspreyPage() {
                 <h3 className="font-bold text-ap-bark text-lg mb-4">Osprey Service Info</h3>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <span className="font-semibold text-ap-bark">ZIP Codes Served:</span>
-                    <p className="text-ap-stone mt-1">34229</p>
-                  </div>
-                  <div>
                     <span className="font-semibold text-ap-bark">Neighborhoods Served:</span>
                     <p className="text-ap-stone mt-1">
                       Osprey, South Venice, The Oaks, Pine Ranch, Casey Key area
