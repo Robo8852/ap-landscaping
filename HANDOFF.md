@@ -1,8 +1,10 @@
 # Handoff — Next Session
 
-Resume after commit `ac155ba` (record www→apex 308 in planning docs). Site is live at `https://ayclandscaping.com` (apex canonical, `www` 308s to apex). `noindex, nofollow` is active — site is reachable but invisible to search engines. Lifting it is the launch event (IMP.md §10).
+Resume after commit `a81275e` (Services + Service Areas dropdown menus in navbar). Site is live at `https://ayclandscaping.com` (apex canonical, `www` 308s to apex). `noindex, nofollow` is active — site is reachable but invisible to search engines. Lifting it is the launch event (IMP.md §10).
 
-The pre-launch sequence in IMP.md §1–§9 is **done**. Only §10 (noindex flip) plus a manual walkthrough stand between current state and being indexable. Beyond that, there's a post-launch queue of real work — GBP, Search Console, Analytics — that matters more than indexing for a local landscaping business.
+The pre-launch sequence in IMP.md §1–§9 is **done**. Owner is mid-walkthrough (§1a). Only §10 (noindex flip) plus finishing the walkthrough stand between current state and being indexable. Beyond that, there's a post-launch queue of real work — GBP, Search Console, Analytics — that matters more than indexing for a local landscaping business.
+
+**Dev server may still be running** in a prior background shell on port 3000 (`npm run dev` via Next.js 16 Turbopack). If it's gone, restart with `npm run dev`. Check `http://localhost:3000` before starting a fresh one.
 
 ---
 
@@ -10,6 +12,13 @@ The pre-launch sequence in IMP.md §1–§9 is **done**. Only §10 (noindex flip
 
 - `a5069f8` — Restore quote email notifications and add form honeypot (§7 + §8)
 - `ac155ba` — Record www→apex 308 redirect in planning docs (§3)
+- `f68733a` — Rewrite HANDOFF.md around current launch-ready state
+- `c289c21` — Mark §1b launch gates resolved (images intentional, address city-only)
+- `a81275e` — Add dropdown menus for Services and Service Areas in navbar
+
+All 5 commits are **pushed to origin/main** and **deployed to prod** (Vercel verified the dropdown markup is live: shadcn `data-slot="navigation-menu-trigger"` × 2 + all 12 sub-route URLs in the served HTML).
+
+The dropdown work used `src/components/ui/navigation-menu.tsx` (shadcn, Radix-backed, was already in repo but unused). Desktop: hover/focus opens, ChevronDown rotates. Mobile: inline accordion with framer-motion height/opacity, only one section open at a time, drawer state resets on close. Sub-items pattern: top row is "All Services" / "All Service Areas" → category index page, then 6 specific pages each. Other top-level links (About, Testimonials, FAQ) stayed flat.
 
 Earlier session highlights (already known but for context):
 
@@ -31,9 +40,9 @@ Clean of recent work. Only pre-existing untracked artifacts remain (`!IMPORTANT.
 
 ## 1. Pre-launch gates (before flipping noindex)
 
-### 1a. Manual site walkthrough
+### 1a. Manual site walkthrough (**in progress** — owner driving)
 
-You — owner — review `/`, `/about`, `/services/*`, `/contact`, `/privacy` on the live apex with a "would I be proud if a Bradenton customer Googled us and clicked through right now?" lens. Test the form. Look for stale copy, dead links, broken images, awkward mobile layout.
+Owner is doing this. Review `/`, `/about`, `/services/*`, `/service-area/*`, `/contact`, `/privacy`, `/faq`, `/testimonials` on the live apex with a "would I be proud if a Bradenton customer Googled us and clicked through right now?" lens. Test the form. Look for stale copy, dead links, broken images, awkward mobile layout, and verify the new dropdowns work on both desktop hover and mobile accordion.
 
 ### 1b. Verify §10 checklist gaps
 
