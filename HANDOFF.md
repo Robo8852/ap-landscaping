@@ -1,6 +1,6 @@
 # Handoff — Next Session
 
-Resume after commit `aeba4a3` (contact page server/client split + privacy page). Site is live at `https://ap-landscaping.vercel.app` until domain registration (§3a) completes.
+Resume after commit `aeba4a3` (contact page server/client split + privacy page). Site is live at `https://ayclandscaping.com` (apex canonical, `www` 308s to apex). `noindex, nofollow` is active until launch-ready (see IMP.md §10).
 
 ---
 

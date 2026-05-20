@@ -11,6 +11,7 @@ Status: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` blocked
 Done this session:
 - §1 Domain registered (ICANN-verified, attached to `ap-landscaping` project, auto-renews 2027-05-19, WHOIS privacy on, billing address fixed)
 - §2 DNS + TLS verified — apex resolves to Vercel IPs (`64.29.17.65`, `216.198.79.1`), HTTP/2 200, HSTS active, `noindex, nofollow` confirmed on new domain
+- §3 `www.ayclandscaping.com` explicit-attached in Vercel as 308 permanent redirect to apex (was 307 via auto-handling); curl confirms `HTTP/2 308`
 - §4 HANDOFF.md updated to reflect live apex domain
 - §5 Business Gmail created — `ayclandscaping@gmail.com` (free Gmail, interim; Workspace migration deferred until revenue justifies $7/mo)
 - §6 Resend domain auth complete — DNS verified, API key generated, from-address = `quotes@ayclandscaping.com`
@@ -19,7 +20,6 @@ Done this session:
 - §9 Privacy link verified — footer Quick Links + bottom bar both link `/privacy`; page returns 200 on apex
 
 In progress / partial:
-- §3 Apex canonical works; `www` 307s via Vercel auto-handling. Need to explicit-attach `www` for 308 (permanent) before flipping `noindex` (§10).
 - §5 recovery: recovery **email** set to Leo's personal address (phone skipped due to Google reuse cap). 2FA still off — open follow-up before launch.
 
 Pending — your action:
@@ -61,18 +61,13 @@ Definition of done: TLS valid, site loads on apex, noindex confirmed on new doma
 
 ---
 
-## 3. Set apex as canonical, `www` → apex 301  `[~]` partial — see note
+## 3. Set apex as canonical, `www` → apex 308  `[x]` complete 2026-05-19
 
 **Owner:** Leo (Vercel UI) + Claude (verify)
 
-Status 2026-05-19: apex is canonical; `www.ayclandscaping.com` currently 307s (temporary) to apex via Vercel's auto-handling. For SEO once `noindex` is lifted (§10), we want a 308 (permanent) instead. Fix:
-1. Vercel project → Domains → **Add Existing** → `www.ayclandscaping.com`
-2. Choose **Redirect to `ayclandscaping.com`** (308)
-3. Re-check: `curl -sI https://www.ayclandscaping.com/` should return `308` not `307`
+Done: `www.ayclandscaping.com` explicit-attached in Vercel project Domains as a 308 permanent redirect to `ayclandscaping.com`. `curl -sI https://www.ayclandscaping.com/` returns `HTTP/2 308` with `location: https://ayclandscaping.com/`. `SITE_URL` in `src/lib/site.ts` is `https://ayclandscaping.com` — matches canonical.
 
-Not blocking anything pre-launch — but do this before flipping `noindex`.
-
-Definition of done: `www.ayclandscaping.com` 308s to apex; `SITE_URL` in `src/lib/site.ts` matches what's canonical.
+Trap avoided: Vercel's "Add Existing" dialog offers a top-level checkbox labeled "Redirect ayclandscaping.com → www.ayclandscaping.com (Recommended)" that would flip canonical to www. Leave that **unchecked** for apex-canonical setups.
 
 ---
 
