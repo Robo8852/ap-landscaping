@@ -1,11 +1,8 @@
 import { internalAction } from "./_generated/server";
 import { v } from "convex/values";
 
-// Temporary: Resend's free tier without a verified domain only delivers to
-// the email on the Resend account itself. Swap back to ayclanscape@gmail.com
-// once ayclandscaping.com (or whichever domain wins) is verified in Resend.
-const OWNER_INBOX = "leoreyes@costadelsolweb.com";
-const FROM_ADDRESS = "AYC Landscaping <onboarding@resend.dev>";
+const OWNER_INBOX = process.env.OWNER_EMAIL ?? "ayclandscaping@gmail.com";
+const FROM_ADDRESS = "AYC Landscaping <quotes@ayclandscaping.com>";
 
 export const notifyOwner = internalAction({
   args: {

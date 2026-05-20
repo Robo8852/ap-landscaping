@@ -13,6 +13,7 @@ const initialForm = {
   city: "",
   service: "",
   message: "",
+  website: "",
 };
 
 export default function ContactForm() {
@@ -39,6 +40,7 @@ export default function ContactForm() {
         service: form.service || undefined,
         message: form.message.trim() || undefined,
         source: "contact-page",
+        website: form.website,
       });
       setStatus("success");
     } catch (err) {
@@ -58,7 +60,7 @@ export default function ContactForm() {
           </div>
           <h3 className="font-serif text-2xl font-bold text-ap-bark mb-2">Message Sent!</h3>
           <p className="text-ap-stone">
-            Thank you for reaching out. We'll be in touch within 24 hours to schedule your free estimate.
+            Thank you for reaching out. We&rsquo;ll be in touch within 24 hours to schedule your free estimate.
           </p>
         </div>
       ) : (
@@ -178,6 +180,19 @@ export default function ContactForm() {
               className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:ring-2 focus:ring-ap-green focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white resize-none"
               placeholder="Tell us about your property and what you're looking for..."
             ></textarea>
+          </div>
+
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+            <label htmlFor="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={(e) => update("website", e.target.value)}
+            />
           </div>
 
           {error && (

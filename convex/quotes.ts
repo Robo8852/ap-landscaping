@@ -12,10 +12,30 @@ export const submitQuote = mutation({
     service: v.optional(v.string()),
     message: v.optional(v.string()),
     source: v.optional(v.string()),
+    website: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const id = await ctx.db.insert("quotes", args);
-    await ctx.scheduler.runAfter(0, internal.emails.notifyOwner, args);
+    if (args.website && args.website.length > 0) return null;
+    const id = await ctx.db.insert("quotes", {
+      firstName: args.firstName,
+      lastName: args.lastName,
+      email: args.email,
+      phone: args.phone,
+      city: args.city,
+      service: args.service,
+      message: args.message,
+      source: args.source,
+    });
+    await ctx.scheduler.runAfter(0, internal.emails.notifyOwner, {
+      firstName: args.firstName,
+      lastName: args.lastName,
+      email: args.email,
+      phone: args.phone,
+      city: args.city,
+      service: args.service,
+      message: args.message,
+      source: args.source,
+    });
     return id;
   },
 });
